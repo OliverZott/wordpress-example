@@ -2,12 +2,19 @@
 
 - install wsl and ubuntu
 - install docker
-- `docker compose up`
+- `docker compose up` or `docker compose up -d` for detached mode
 - `http://localhost:8000/wp-admin/`
 
 ## WP remarks
 
-- files system [link](https://www.youtube.com/watch?v=Bz-UB_KjufU)
+- Files system [link](https://www.youtube.com/watch?v=Bz-UB_KjufU)
+
+### Plugins
+
+Example:
+
+- in PLugin Folder, generate PHP file (see Hello world example)
+- under Plugins in <http://localhost:8000/wp-admin/> activate and see output in footer
 
 ## Deployment to prod
 
