@@ -27,6 +27,12 @@ services:
     volumes:
       - .:/var/www/html
 
+  php:
+    image: php:8.2-cli
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    command: bash -c "while true; do sleep 30; done;"
+
 volumes:
   db_data:
-  wordpress_data:
