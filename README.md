@@ -9,6 +9,11 @@
 - `docker compose up` or `docker compose up -d` for detached mode
 - `http://localhost:8000/wp-admin/`
 
+Attach to wordpress container:
+
+- `docker ps` ...get container ID
+- `docker exec -it <container-id> /bin/bash`
+
 ### Access / dump database
 
 Show db in client (e.g. datagrip):
