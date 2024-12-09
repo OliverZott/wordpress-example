@@ -4,8 +4,10 @@ services:
     ports: 
       - "3309:3306"
     volumes:
-      # - local_db_data:/var/lib/mysql # Mounts the local directory `./db_data` to the container's `/var/lib/mysql` directory
       - db_data:/var/lib/mysql
+      # - local_db_data:/var/lib/mysql # Mounts the local directory `./db_data` to the container's `/var/lib/mysql` directory
+      # - ./backup.sql:/docker-entrypoint-initdb.d/backup.sql # Seed database from a backup-sql file
+      # - ./init.sql:/docker-entrypoint-initdb.d/init.sql # Grant privilages to the wordpress user
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: somewordpress
