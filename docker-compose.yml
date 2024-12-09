@@ -4,6 +4,7 @@ services:
     ports: 
       - "3309:3306"
     volumes:
+      # - local_db_data:/var/lib/mysql # Mounts the local directory `./db_data` to the container's `/var/lib/mysql` directory
       - db_data:/var/lib/mysql
     restart: always
     environment:
@@ -21,7 +22,8 @@ services:
       - "8000:80"
     restart: always
     environment:
-      WORDPRESS_DB_HOST: db
+      # use service name without port number, Docker Compose uses internal DNS to resolve service name to the appropriate container IP address within the same network.
+      WORDPRESS_DB_HOST: db 
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
