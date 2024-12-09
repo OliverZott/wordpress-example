@@ -1,8 +1,8 @@
-version: '3.9'
-
 services:
   db:
-    image: mysql:5.7
+    image: mysql:latest
+    ports: 
+      - "3309:3306"
     volumes:
       - db_data:/var/lib/mysql
     restart: always
@@ -12,6 +12,7 @@ services:
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
 
+
   wordpress:
     depends_on:
       - db
@@ -20,19 +21,15 @@ services:
       - "8000:80"
     restart: always
     environment:
-      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
+    # Mounts the local directory `./wp-content` and ./wp-config.phpto the container's respective directory
+    # This allows you to persist and manage WordPress content files locally.
     volumes:
-      - .:/var/www/html
-
-  php:
-    image: php:8.2-cli
-    volumes:
-      - .:/var/www/html
-    working_dir: /var/www/html
-    command: bash -c "while true; do sleep 30; done;"
+      - ./wp-content:/var/www/html/wp-content
+      - ./wp-config.php:/var/www/html/wp-config.php
 
 volumes:
   db_data:

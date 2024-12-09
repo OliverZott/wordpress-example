@@ -1,11 +1,30 @@
 # WordPress Dev
 
+## Use this wp repo
+
+### Use container for development
+
 - install wsl and ubuntu
 - install docker
 - `docker compose up` or `docker compose up -d` for detached mode
 - `http://localhost:8000/wp-admin/`
 
-## WP remarks
+### Access / dump database
+
+Show db in client (e.g. datagrip):
+
+- host: `localhost`
+- port : `3309`
+
+Create db mysqldump:
+
+```bash
+docker ps
+docker exec <container_id> sh -c 'exec mysqldump -u"username" -p"password" database_name' > database_backup.sql
+docker exec my-mysql-container sh -c 'exec mysqldump -uroot -psomewordpress wordpress' > database_backup.sql
+```
+
+## General WP remarks
 
 - Files system [link](https://www.youtube.com/watch?v=Bz-UB_KjufU)
 
