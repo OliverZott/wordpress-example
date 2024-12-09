@@ -14,7 +14,7 @@
 *.swp
 
 # Ignore database exports
-*.sql
+# *.sql
 
 # Ignore uploads folder (optional, can be included if you need to version control media files)
 /wp-content/uploads/
